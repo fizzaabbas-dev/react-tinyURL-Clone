@@ -74,8 +74,8 @@ export default function Navbar() {
 
         {/* Desktop Auth Buttons */}
         <div className="hidden lg:flex items-center space-x-6 text-base font-normal" onMouseEnter={() => setActiveDropdown(null)}>
-          <button onClick={(e) => navigateTo('/login', e)} className="text-slate-100 hover:text-white cursor-pointer">Log In</button>
-          <button onClick={(e) => navigateTo('/signup', e)} className="bg-[#0092b3] hover:bg-[#007b97] text-white px-5 py-2.5 rounded-md shadow transition cursor-pointer">Sign Up</button>
+          <button className="text-slate-100 hover:text-white cursor-pointer">Log In</button>
+          <button className="bg-[#0092b3] hover:bg-[#007b97] text-white px-5 py-2.5 rounded-md shadow transition cursor-pointer">Sign Up</button>
         </div>
 
         {/* Mobile Menu Button */}
