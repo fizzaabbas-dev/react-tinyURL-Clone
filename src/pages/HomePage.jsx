@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -62,7 +61,7 @@ function App() {
       });
 
       const data = response.data;
-      const generatedShortUrl = data.shortUrl || `https://backendtinyurl-production-cad7.up.railway.app/${data.alias || alias || Math.random().toString(36).substring(2, 8)}`;
+      const generatedShortUrl = data.shortUrl;
       
       const newLink = {
         original: formattedUrl,
@@ -78,17 +77,7 @@ function App() {
       setAlias("");
     } catch (error) {
       console.error("Error shortening URL:", error);
-      const generatedShortUrl = `https://backendtinyurl-production-cad7.up.railway.app/${alias || Math.random().toString(36).substring(2, 8)}`;
-      const fallbackLink = {
-        original: formattedUrl,
-        short: generatedShortUrl,
-        date: new Date().toLocaleDateString(),
-      };
-      const updatedLinks = [fallbackLink, ...recentLinks];
-      saveToLocalStorage(updatedLinks);
-      setShortenedResult(generatedShortUrl);
-      setDestinationUrl("");
-      setAlias("");
+      alert("Failed to shorten link. Please check your connection or alias.");
     } finally {
       setIsLoading(false);
     }
@@ -234,7 +223,7 @@ function App() {
                 <div>
                   <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                     <Sparkles className="w-3.5 h-3.5 text-[#002342]" />
-                    <span>Railway Link</span>
+                    <span>Short URL</span>
                   </label>
                   <div className="relative">
                     <input
