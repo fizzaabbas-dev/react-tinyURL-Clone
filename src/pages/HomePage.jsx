@@ -56,13 +56,13 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("https://backendtinyurl-production-7a40.up.railway.app/api/shorten", {
+      const response = await axios.post("https://backendtinyurl-production-cad7.up.railway.app/api/shorten", {
         originalUrl: formattedUrl,
         alias: alias || undefined,
       });
 
       const data = response.data;
-      const generatedShortUrl = data.shortUrl || `https://backendtinyurl-production-7a40.up.railway.app/${data.alias || alias || Math.random().toString(36).substring(2, 8)}`;
+      const generatedShortUrl = data.shortUrl || `https://backendtinyurl-production-cad7.up.railway.app/${data.alias || alias || Math.random().toString(36).substring(2, 8)}`;
       
       const newLink = {
         original: formattedUrl,
@@ -78,7 +78,7 @@ function App() {
       setAlias("");
     } catch (error) {
       console.error("Error shortening URL:", error);
-      const generatedShortUrl = `https://backendtinyurl-production-7a40.up.railway.app/${alias || Math.random().toString(36).substring(2, 8)}`;
+      const generatedShortUrl = `https://backendtinyurl-production-cad7.up.railway.app/${alias || Math.random().toString(36).substring(2, 8)}`;
       const fallbackLink = {
         original: formattedUrl,
         short: generatedShortUrl,
