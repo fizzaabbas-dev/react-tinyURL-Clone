@@ -386,9 +386,9 @@ function App() {
               {recentLinks.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 bg-slate-500/10 rounded border border-slate-200 gap-2"
+                  className="flex flex-col md:flex-row justify-between items-start md:items-center p-3 bg-slate-500/10 rounded border border-slate-200 gap-3"
                 >
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden space-y-1">
                     <a
                       href={item.short}
                       target="_blank"
@@ -403,20 +403,33 @@ function App() {
                     </p>
                   </div>
                   
-                  <button
-                    type="button"
-                    onClick={() => {
-                      navigator.clipboard.writeText(item.short);
-                      setCopied(true);
-
-                      setTimeout(() => {
-                        setCopied(false);
-                      }, 2000);
-                    }}
-                    className="..."
-                  >
-                    {copied ? "✓" : "Copy"}
-                  </button>
+                  <div className="flex items-center gap-1.5 w-full md:w-auto justify-end">
+                    <a
+                      href={item.short}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#007a96] hover:bg-[#00627a] text-white px-2.5 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                    >
+                      <ExternalLink className="w-3 h-3" /> Visit URL
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => alert("QR code view")}
+                      className="bg-[#007a96] hover:bg-[#00627a] text-white px-2.5 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                    >
+                      <QrCode className="w-3 h-3" /> QR
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        navigator.clipboard.writeText(item.short);
+                        alert("Copied!");
+                      }}
+                      className="bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                    >
+                      <Copy className="w-3 h-3" /> Copy
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
