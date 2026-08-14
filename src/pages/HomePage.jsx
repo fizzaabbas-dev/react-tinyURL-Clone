@@ -210,9 +210,8 @@ function App() {
             <form onSubmit={handleFormSubmit}>
               {activeTab === "shorten" ? (
                 <div className="space-y-4">
-                  {/* Long URL input remains visible always */}
                   <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                    <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                       <Send className="w-3.5 h-3.5 text-[#002342]" />
                       <span>
                         Long URL <span className="text-red-500">*</span>
@@ -228,7 +227,6 @@ function App() {
                     />
                   </div>
 
-                  {/* Generated TinyURL result section appears below input when shortenedResult exists */}
                   {shortenedResult ? (
                     <div className="space-y-4 pt-2">
                       <div>
@@ -257,7 +255,6 @@ function App() {
                         {copied && <span className="text-xs text-green-600 mt-1 block">Copied to clipboard!</span>}
                       </div>
 
-                      {/* Action buttons: Visit URL, QR, Copy */}
                       <div className="flex flex-wrap items-center gap-2 pt-1">
                         <a
                           href={shortenedResult}
@@ -301,7 +298,7 @@ function App() {
                     <>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                          <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                          <label className=" text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                             <Globe className="w-3.5 h-3.5 text-[#002342]" />
                             <span>Domain</span>
                           </label>
@@ -315,12 +312,14 @@ function App() {
                         </div>
 
                         <div>
-                          <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                          <label className=" text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                             <Pencil className="w-3.5 h-3.5 text-[#002342]" />
                             <span>Alias (optional)</span>
                           </label>
                           <div className="flex items-center space-x-1">
-                            <span className="text-slate-400 font-semibold text-sm">/</span>
+                            <span className="text-slate-400 font-semibold text-sm">
+                              /
+                            </span>
                             <input
                               type="text"
                               value={alias}
@@ -331,20 +330,32 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      <p className="text-[11px] text-slate-400 -mt-2">Must be at least 5 characters</p>
+                      <p className="text-[11px] text-slate-400 -mt-2">
+                        Must be at least 5 characters
+                      </p>
 
                       <button
                         type="submit"
+                        disabled={loading}
                         className="block text-center w-full bg-[#1b7a3e] hover:bg-[#166332] text-white font-semibold py-3 px-4 rounded shadow text-sm transition cursor-pointer mt-3"
                       >
-                        Shorten Link
+                        {loading ? "Shortening..." : "Shorten Link"}
                       </button>
 
                       <p className="text-[11px] text-slate-500 text-center leading-normal pt-1 font-normal">
                         By clicking Shorten Link, you agree with our{" "}
-                        <span className="underline cursor-pointer">Terms of Service</span>,{" "}
-                        <span className="underline cursor-pointer">Privacy Policy</span>, and{" "}
-                        <span className="underline cursor-pointer">Use of Cookies</span>.
+                        <span className="underline cursor-pointer">
+                          Terms of Service
+                        </span>
+                        ,{" "}
+                        <span className="underline cursor-pointer">
+                          Privacy Policy
+                        </span>
+                        , and{" "}
+                        <span className="underline cursor-pointer">
+                          Use of Cookies
+                        </span>
+                        .
                       </p>
                     </>
                   )}
@@ -352,7 +363,7 @@ function App() {
               ) : (
                 <div className="space-y-4">
                   <div>
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                    <label className=" text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                       <Send className="w-3.5 h-3.5 text-[#002342]" />
                       <span>
                         Destination URL <span className="text-red-500">*</span>
@@ -370,7 +381,7 @@ function App() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                      <label className=" text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                         <Globe className="w-3.5 h-3.5 text-[#002342]" />
                         <span>Domain</span>
                       </label>
@@ -384,12 +395,14 @@ function App() {
                     </div>
 
                     <div>
-                      <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                      <label className=" text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                         <Pencil className="w-3.5 h-3.5 text-[#002342]" />
                         <span>Alias (optional)</span>
                       </label>
                       <div className="flex items-center space-x-1">
-                        <span className="text-slate-400 font-semibold text-sm">/</span>
+                        <span className="text-slate-400 font-semibold text-sm">
+                          /
+                        </span>
                         <input
                           type="text"
                           value={alias}
@@ -400,20 +413,32 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-[11px] text-slate-400 -mt-2">Must be at least 5 characters</p>
+                  <p className="text-[11px] text-slate-400 -mt-2">
+                    Must be at least 5 characters
+                  </p>
 
                   <button
                     type="submit"
+                    disabled={loading}
                     className="block text-center w-full bg-[#1b7a3e] hover:bg-[#166332] text-white font-semibold py-3 px-4 rounded shadow text-sm transition cursor-pointer mt-3"
                   >
-                    Generate QR Code
+                    {loading ? "Generating..." : "Generate QR Code"}
                   </button>
 
                   <p className="text-[11px] text-slate-500 text-center leading-normal pt-1 font-normal">
                     By clicking Generate QR Code, you agree with our{" "}
-                    <span className="underline cursor-pointer">Terms of Service</span>,{" "}
-                    <span className="underline cursor-pointer">Privacy Policy</span>, and{" "}
-                    <span className="underline cursor-pointer">Use of Cookies</span>.
+                    <span className="underline cursor-pointer">
+                      Terms of Service
+                    </span>
+                    ,{" "}
+                    <span className="underline cursor-pointer">
+                      Privacy Policy
+                    </span>
+                    , and{" "}
+                    <span className="underline cursor-pointer">
+                      Use of Cookies
+                    </span>
+                    .
                   </p>
                 </div>
               )}
