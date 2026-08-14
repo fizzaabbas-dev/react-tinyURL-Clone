@@ -371,7 +371,7 @@ function App() {
       </main>
 
       {/* RECENT LINKS SECTION */}
-      <section className="px-4 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full">
+      <section className="px-6 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full">
         <h2 className="text-lg font-semibold text-white mb-3">
           Your Recent Links:
         </h2>
@@ -386,51 +386,37 @@ function App() {
               {recentLinks.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-2.5 bg-slate-500/10 rounded border border-slate-200 gap-2 w-full max-w-full overflow-hidden"
+                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-3 bg-slate-500/10 rounded border border-slate-200 gap-2"
                 >
-                  <div className="w-full sm:w-auto flex-1 space-y-0.5 min-w-0 overflow-hidden">
+                  <div className="overflow-hidden">
                     <a
                       href={item.short}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[#002342] hover:underline flex items-center justify-between sm:justify-start gap-1.5 text-sm w-full min-w-0"
+                      className="font-medium text-[#002342] hover:underline flex items-center gap-1.5 break-all text-sm"
                     >
-                      <span className="truncate">{item.short}</span>
-                      <ExternalLink className="w-3.5 h-3.5 shrink-0 inline text-[#002342] sm:hidden" />
+                      <span>{item.short}</span>
+                      <ExternalLink className="w-3.5 h-3.5 inline" />
                     </a>
-                    <p className="text-xs text-slate-500 truncate w-full">
+                    <p className="text-xs text-slate-500 truncate max-w-md">
                       {item.original}
                     </p>
                   </div>
                   
-                  {/* Mobile layout: only Copy button. Laptop/Desktop layout (sm:flex): Visit, QR, Copy buttons */}
-                  <div className="w-full sm:w-auto flex items-center justify-end gap-1.5 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-200/60">
-                    <a
-                      href={item.short}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hidden sm:flex bg-[#007a96] hover:bg-[#00627a] text-white px-2.5 py-1.5 rounded text-xs font-semibold items-center gap-1 cursor-pointer"
-                    >
-                      <ExternalLink className="w-3 h-3" /> Visit URL
-                    </a>
-                    <button
-                      type="button"
-                      onClick={() => alert("QR code view")}
-                      className="hidden sm:flex bg-[#007a96] hover:bg-[#00627a] text-white px-2.5 py-1.5 rounded text-xs font-semibold items-center gap-1 cursor-pointer"
-                    >
-                      <QrCode className="w-3 h-3" /> QR
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        navigator.clipboard.writeText(item.short);
-                        alert("Copied!");
-                      }}
-                      className="w-full sm:w-auto bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer"
-                    >
-                      <Copy className="w-3 h-3 shrink-0" /> Copy
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigator.clipboard.writeText(item.short);
+                      setCopied(true);
+
+                      setTimeout(() => {
+                        setCopied(false);
+                      }, 2000);
+                    }}
+                    className="..."
+                  >
+                    {copied ? "✓" : "Copy"}
+                  </button>
                 </div>
               ))}
             </div>
