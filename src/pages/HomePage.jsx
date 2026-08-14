@@ -134,7 +134,7 @@ function App() {
           short: data.shortURL,
           date: new Date().toLocaleDateString(),
         };
-        
+
         setShortenedResult(data.shortURL);
         setRecentLinks((prevLinks) => [newLink, ...prevLinks]);
         setDestinationUrl("");
@@ -213,7 +213,8 @@ function App() {
                   <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
                     <Send className="w-3.5 h-3.5 text-[#002342]" />
                     <span>
-                      {activeTab === "shorten" ? "Long URL" : "Destination URL"} <span className="text-red-500">*</span>
+                      {activeTab === "shorten" ? "Long URL" : "Destination URL"}{" "}
+                      <span className="text-red-500">*</span>
                     </span>
                   </label>
                   <input
@@ -251,20 +252,11 @@ function App() {
                           <Copy className="w-4 h-4" />
                         </button>
                       </div>
-                      {copied && <span className="text-xs text-green-600 mt-1 block">Copied to clipboard!</span>}
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2 pt-1">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          navigator.clipboard.writeText(shortenedResult);
-                          alert("Copied!");
-                        }}
-                        className="bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
-                      >
-                        <Copy className="w-3.5 h-3.5" /> Copy
-                      </button>
+                      {copied && (
+                        <span className="text-xs text-green-600 mt-1 block">
+                          Copied to clipboard!
+                        </span>
+                      )}
                     </div>
 
                     <button
@@ -328,12 +320,16 @@ function App() {
                           ? "Shortening..."
                           : "Generating..."
                         : activeTab === "shorten"
-                        ? "Shorten Link"
-                        : "Generate QR Code"}
+                          ? "Shorten Link"
+                          : "Generate QR Code"}
                     </button>
 
                     <p className="text-[11px] text-slate-500 text-center leading-normal pt-1 font-normal">
-                      By clicking {activeTab === "shorten" ? "Shorten Link" : "Generate QR Code"}, you agree with our{" "}
+                      By clicking{" "}
+                      {activeTab === "shorten"
+                        ? "Shorten Link"
+                        : "Generate QR Code"}
+                      , you agree with our{" "}
                       <span className="underline cursor-pointer">
                         Terms of Service
                       </span>
@@ -353,7 +349,7 @@ function App() {
             </form>
           </div>
         </div>
-        </main>
+      </main>
 
       {/* RECENT LINKS SECTION */}
       <section className="px-4 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full">
@@ -387,7 +383,7 @@ function App() {
                       {item.original}
                     </p>
                   </div>
-                  
+
                   <div className="w-full sm:w-auto flex items-center justify-end gap-1.5 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-200/60">
                     <button
                       type="button"
