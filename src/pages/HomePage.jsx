@@ -386,24 +386,24 @@ function App() {
               {recentLinks.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col md:flex-row justify-between items-start md:items-center p-3 bg-slate-500/10 rounded border border-slate-200 gap-3"
+                  className="flex flex-col p-3 bg-slate-500/10 rounded border border-slate-200 gap-3 w-full overflow-hidden"
                 >
-                  <div className="overflow-hidden space-y-1">
+                  <div className="w-full overflow-hidden space-y-1">
                     <a
                       href={item.short}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[#002342] hover:underline flex items-center gap-1.5 break-all text-sm"
+                      className="font-medium text-[#002342] hover:underline flex items-center gap-1.5 break-all text-sm w-full"
                     >
-                      <span>{item.short}</span>
-                      <ExternalLink className="w-3.5 h-3.5 inline" />
+                      <span className="break-all">{item.short}</span>
+                      <ExternalLink className="w-3.5 h-3.5 shrink-0 inline" />
                     </a>
-                    <p className="text-xs text-slate-500 truncate max-w-md">
+                    <p className="text-xs text-slate-500 break-all w-full">
                       {item.original}
                     </p>
                   </div>
                   
-                  <div className="flex items-center gap-1.5 w-full md:w-auto justify-end">
+                  <div className="flex flex-wrap items-center gap-1.5 w-full justify-end pt-1 border-t border-slate-200/60">
                     <a
                       href={item.short}
                       target="_blank"
