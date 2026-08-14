@@ -23,6 +23,7 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [shortenedResult, setShortenedResult] = useState("");
 
   // Yahan FAQs ki state aur toggle function define kiya gaya hai
   const [faqs, setFaqs] = useState([
@@ -133,6 +134,8 @@ function App() {
           short: data.shortURL,
           date: new Date().toLocaleDateString(),
         };
+        
+        setShortenedResult(data.shortURL);
         setRecentLinks((prevLinks) => [newLink, ...prevLinks]);
         setDestinationUrl("");
         setAlias("");
