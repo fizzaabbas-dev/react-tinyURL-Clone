@@ -113,7 +113,7 @@ function App() {
       setLoading(true);
 
       const response = await fetch(
-        "https://backendtinyurl-production-7a40.up.railway.app/url",
+        "https://backendtinyurl-production-7a40.up.railway.app/save",
         {
           method: "POST",
           headers: {
@@ -127,21 +127,16 @@ function App() {
 
       const data = await response.json();
 
-      if (!data.ok) {
-        alert("URL shortening failed");
-        return;
+      if (data.ok) {
+        const newLink = {
+          original: formattedUrl,
+          short: data.shortURL,
+          date: new Date().toLocaleDateString(),
+        };
+        setRecentLinks((prevLinks) => [newLink, ...prevLinks]);
+        setDestinationUrl("");
+        setAlias("");
       }
-
-      const newLink = {
-        original: formattedUrl,
-        short: data.shortURL,
-        date: new Date().toLocaleDateString(),
-      };
-
-      setRecentLinks((prevLinks) => [newLink, ...prevLinks]);
-
-      setDestinationUrl("");
-      setAlias("");
     } catch (error) {
       console.log(error);
       alert("Backend connection failed");
