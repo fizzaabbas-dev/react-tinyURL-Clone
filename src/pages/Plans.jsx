@@ -321,11 +321,11 @@ function Plans() {
               {/* MOBILE ONLY: "or" Divider & Free Card */}
               <div className="block md:hidden mt-8">
                 <div className="flex items-center my-6">
-                  <div className="flex-grow border-t border-slate-300"></div>
+                  <div className="-grow border-t border-slate-300"></div>
                   <span className="px-4 text-slate-500 text-sm font-medium">
                     or
                   </span>
-                  <div className="flex-grow border-t border-slate-300"></div>
+                  <div className="-grow border-t border-slate-300"></div>
                 </div>
 
                 <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col justify-between w-full">
@@ -490,9 +490,9 @@ function Plans() {
 
       {/* VIDEO HIGHLIGHT SECTION */}
       <section className="w-full bg-[#007791] py-0 text-white">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-350 mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-            <div className="w-full lg:w-[50%] flex justify-center items-start h-[220px] sm:h-[280px] lg:h-[400px] px-0 lg:px-0">
+            <div className="w-full lg:w-[50%] flex justify-center items-start h-55 sm:h-70 lg:h-100 px-0 lg:px-0">
               <video
                 src="https://tinyurl.com/images/overhauling/user-highlight-video.mp4"
                 autoPlay
@@ -528,7 +528,7 @@ function Plans() {
 
       {/* FREQUENTLY ASKED QUESTIONS (FAQ) SECTION */}
       <section className="w-full bg-white py-20 px-6 sm:px-12 lg:px-40">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-350 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-6 lg:pt-12">
             {/* LEFT SIDE: TITLE */}
             <div className="lg:col-span-4 text-center">

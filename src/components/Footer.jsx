@@ -25,7 +25,7 @@ function Footer() {
 
       {/* BOTTOM GRADIENT FOOTER SECTION */}
       <div className="py-14 px-6 sm:px-12 lg:px-16" style={{ background: 'linear-gradient(to left, #043958, #095C7A, #0C7390, #0092b3)' }}>
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 items-start pb-4">
+        <div className="max-w-350 mx-auto grid grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 items-start pb-4">
           
           {/* Column 1: Features */}
           <div className="space-y-4 hidden lg:block">

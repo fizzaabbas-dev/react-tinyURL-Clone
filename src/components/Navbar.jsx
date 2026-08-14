@@ -51,7 +51,7 @@ export default function Navbar() {
           
           <button 
             onMouseEnter={() => setActiveDropdown('features')} 
-            className={`hover:text-white transition cursor-pointer py-[20px] ${activeDropdown === 'features' ? 'underline font-normal text-white' : ''}`}
+            className={`hover:text-white transition cursor-pointer py-5 ${activeDropdown === 'features' ? 'underline font-normal text-white' : ''}`}
           >
             Features
           </button>
@@ -66,7 +66,7 @@ export default function Navbar() {
 
           <button 
             onMouseEnter={() => setActiveDropdown('resources')} 
-            className={`hover:text-white transition cursor-pointer py-[20px] ${activeDropdown === 'resources' ? 'underline font-normal text-white' : ''}`}
+            className={`hover:text-white transition cursor-pointer py-5 ${activeDropdown === 'resources' ? 'underline font-normal text-white' : ''}`}
           >
             Resources
           </button>
@@ -90,9 +90,9 @@ export default function Navbar() {
       {activeDropdown === 'features' && (
         <div 
           onMouseEnter={() => setActiveDropdown('features')}
-          className="hidden lg:block bg-[#f8f9fa] text-slate-900 border-b border-slate-300 shadow-xl py-12 px-16 absolute left-0 right-0 top-[70px] z-40 transition-all"
+          className="hidden lg:block bg-[#f8f9fa] text-slate-900 border-b border-slate-300 shadow-xl py-12 px-16 absolute left-0 right-0 top-17.5 z-40 transition-all"
         >
-          <div className="max-w-[1200px] mx-auto grid grid-cols-12 gap-8 items-center min-h-[160px]">
+          <div className="max-w-300 mx-auto grid grid-cols-12 gap-8 items-center min-h-40">
             <div className="col-span-4 flex items-center justify-start h-full">
               <h2 className="text-4xl font-semibold text-[#1a202c]">Features</h2>
             </div>
@@ -129,9 +129,9 @@ export default function Navbar() {
       {activeDropdown === 'resources' && (
         <div 
           onMouseEnter={() => setActiveDropdown('resources')}
-          className="hidden lg:block bg-[#f8f9fa] text-slate-900 border-b border-slate-300 shadow-xl py-12 px-16 absolute left-0 right-0 top-[70px] z-40 transition-all"
+          className="hidden lg:block bg-[#f8f9fa] text-slate-900 border-b border-slate-300 shadow-xl py-12 px-16 absolute left-0 right-0 top-17.5 z-40 transition-all"
         >
-          <div className="max-w-[1200px] mx-auto grid grid-cols-12 gap-8 items-center min-h-[160px]">
+          <div className="max-w-300 mx-auto grid grid-cols-12 gap-8 items-center min-h-40">
             <div className="col-span-4 flex items-center justify-start h-full">
               <h2 className="text-4xl font-semibold text-[#1a202c]">Resources</h2>
             </div>
@@ -189,42 +189,42 @@ export default function Navbar() {
                 {mobileSection === 'features' && (
                   <div className="pb-3 space-y-3">
                     <div onClick={(e) => navigateTo('/link-editor', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <Pencil className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <Pencil className="w-5 h-5 text-[#0092b3] mt-0.5 shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Link Editor</p>
                         <p className="text-xs text-slate-500">Keep all your links dynamic, and extend their value in the long run</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/branded-links', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <Link2 className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <Link2 className="w-5 h-5 text-[#0092b3] mt-0.5-shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Branded Links</p>
                         <p className="text-xs text-slate-500">Turn heads and hold attention with fully custom short links</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/qr-code', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <QrCode className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <QrCode className="w-5 h-5 text-[#0092b3] mt-0.5-shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">QR Code Generator</p>
                         <p className="text-xs text-slate-500">Elevate experiences with dynamic, scannable codes</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/link-management', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <Menu className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <Menu className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Link Management</p>
                         <p className="text-xs text-slate-500">Organize as many links as you need with our powerful, intuitive platform</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/url-tracking', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <BarChart3 className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <BarChart3 className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Short URL Tracking</p>
                         <p className="text-xs text-slate-500">Measure the success of your efforts and make smarter, data-driven choices</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/url-api', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <Code2 className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <Code2 className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Short URL API</p>
                         <p className="text-xs text-slate-500">Build powerful apps and automations with our link shortening API</p>
@@ -249,28 +249,28 @@ export default function Navbar() {
                 {mobileSection === 'resources' && (
                   <div className="pb-3 space-y-3">
                     <div onClick={(e) => navigateTo('/blog', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <FileText className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <FileText className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Blog</p>
                         <p className="text-xs text-slate-500">Read the latest tips and tricks from the top experts in link shortening</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/developers', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <Code2 className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <Code2 className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">For Developers</p>
                         <p className="text-xs text-slate-500">Power your apps and software with automated, fully custom URL shortening</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/proven-process', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <CheckCircle2 className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">Our Proven Process</p>
                         <p className="text-xs text-slate-500">Learn how our customers go from zero to hero with our link management tools</p>
                       </div>
                     </div>
                     <div onClick={(e) => navigateTo('/about-us', e)} className="p-3 rounded cursor-pointer transition flex items-start space-x-3 hover:bg-[#e7f1f5]">
-                      <UserCheck className="w-5 h-5 text-[#0092b3] mt-0.5 flex-shrink-0" />
+                      <UserCheck className="w-5 h-5 text-[#0092b3] mt-0.5 -shrink-0" />
                       <div>
                         <p className="font-medium text-base text-slate-900">About Us</p>
                         <p className="text-xs text-slate-500">Learn about TinyURL's journey as the first link shortener</p>

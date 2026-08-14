@@ -36,7 +36,7 @@ function Domains() {
 
         {/* HERO SECTION */}
         <section className="w-full py-8 sm:py-12 lg:py-24 px-6 sm:px-12 lg:px-20">
-          <div className="max-w-[1400px] mx-auto">
+          <div className="max-w-350 mx-auto">
             
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
               
@@ -54,12 +54,12 @@ function Domains() {
                 </div>
 
                 {/* Paragraph 1 */}
-                <p className="text-slate-200 text-lg sm:text-xl lg:text-lg leading-relaxed max-w-[620px]">
+                <p className="text-slate-200 text-lg sm:text-xl lg:text-lg leading-relaxed max-w-155">
                   Branded domains are used exclusively to create short, appealing, and informative links that put your branding or core message front-and-center.
                 </p>
 
                 {/* Paragraph 2 */}
-                <p className="text-slate-200 text-lg sm:text-xl lg:text-lg leading-relaxed max-w-[620px]">
+                <p className="text-slate-200 text-lg sm:text-xl lg:text-lg leading-relaxed max-w-155">
                   TinyURL subscribers can purchase domains directly through our platform. Try it now!
                 </p>
 
@@ -76,7 +76,7 @@ function Domains() {
                 <img
                   src="https://tinyurl.com/images/overhauling/domains/figure-1.webp" 
                   alt="Custom Domains Illustration"
-                  className="w-full max-w-[500px] lg:max-w-[600px] h-auto object-contain"
+                  className="w-full max-w-125 lg:max-w-150 h-auto object-contain"
                 />
               </div>
 
@@ -87,7 +87,7 @@ function Domains() {
 
       {/* HOW TO USE SECTION */}
       <section className="w-full bg-[#f8f9fa] py-16 px-4 sm:px-12 lg:px-20">
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-300 mx-auto">
           
           {/* Section Title */}
           <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-bold text-[#071728] text-center mb-16 leading-snug tracking-tight">
@@ -98,7 +98,7 @@ function Domains() {
             
             {/* Item 1 */}
             <div className="flex flex-row lg:flex-col items-start lg:items-center gap-6 lg:gap-6 group">
-              <div className="w-32 sm:w-36 lg:w-44 flex-shrink-0 flex justify-center items-start lg:items-center transition-transform duration-300 group-hover:scale-110 cursor-pointer order-1 lg:order-2 pt-1 lg:pt-0">
+              <div className="w-32 sm:w-36 lg:w-44 -shrink-0 flex justify-center items-start lg:items-center transition-transform duration-300 group-hover:scale-110 cursor-pointer order-1 lg:order-2 pt-1 lg:pt-0">
                 <img src="https://tinyurl.com/images/overhauling/domains/figure-2.webp" alt="Register a Domain" className="w-full h-auto object-contain" />
               </div>
               <div className="flex-1 lg:text-center text-left order-2 lg:order-1 space-y-3">
@@ -116,7 +116,7 @@ function Domains() {
 
             {/* Item 2 */}
             <div className="flex flex-row lg:flex-col items-start lg:items-center gap-6 lg:gap-6 group">
-              <div className="w-32 sm:w-36 lg:w-44 flex-shrink-0 flex justify-center items-start lg:items-center transition-transform duration-300 group-hover:scale-110 cursor-pointer order-1 lg:order-2 pt-1 lg:pt-0">
+              <div className="w-32 sm:w-36 lg:w-44 -shrink-0 flex justify-center items-start lg:items-center transition-transform duration-300 group-hover:scale-110 cursor-pointer order-1 lg:order-2 pt-1 lg:pt-0">
                 <img src="https://tinyurl.com/images/overhauling/domains/figure-3.webp" alt="Bring Your Own Domain" className="w-full h-auto object-contain" />
               </div>
               <div className="flex-1 lg:text-center text-left order-2 lg:order-1 space-y-3">
@@ -134,7 +134,7 @@ function Domains() {
 
             {/* Item 3 */}
             <div className="flex flex-row lg:flex-col items-start lg:items-center gap-6 lg:gap-6 group">
-              <div className="w-32 sm:w-36 lg:w-44 flex-shrink-0 flex justify-center items-start lg:items-center transition-transform duration-300 group-hover:scale-110 cursor-pointer order-1 lg:order-2 pt-1 lg:pt-0">
+              <div className="w-32 sm:w-36 lg:w-44 -shrink-0 flex justify-center items-start lg:items-center transition-transform duration-300 group-hover:scale-110 cursor-pointer order-1 lg:order-2 pt-1 lg:pt-0">
                 <img src="https://tinyurl.com/images/overhauling/domains/figure-4.webp" alt="Bring Your Own Subdomain" className="w-full h-auto object-contain" />
               </div>
               <div className="flex-1 lg:text-center text-left order-2 lg:order-1 space-y-3">
@@ -156,9 +156,9 @@ function Domains() {
 
       {/* FREE YEAR DOMAINS SECTION */}
       <section className="w-full bg-[#116479] overflow-hidden">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
+        <div className="max-w-350 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
           
-          <div className="w-full h-[320px] sm:h-[450px] lg:h-[500px] relative overflow-hidden order-1 lg:order-1">
+          <div className="w-full h-80 sm:h-112.5 lg:h-125 relative overflow-hidden order-1 lg:order-1">
             <video 
               autoPlay 
               loop 
@@ -177,7 +177,7 @@ function Domains() {
               Certain Domains
             </h2>
             
-            <p className="text-base sm:text-lg leading-relaxed mb-6 max-w-[520px]">
+            <p className="text-base sm:text-lg leading-relaxed mb-6 max-w-130">
               To get you started, we've set things up to offer you the first<br className="hidden lg:block" />
               year free for certain domains with the <span className="italic">.life</span>, <span className="italic">.live</span>, and <span className="italic">.info</span><br className="hidden lg:block" />
               TLDs.
@@ -205,13 +205,13 @@ function Domains() {
 
         {/* ================= 1. SECTION ================= */}
         <section className="w-full py-12 px-6 lg:px-16 bg-white">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
+          <div className="max-w-275 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
             
             <div className="w-full flex justify-center order-1 lg:order-1">
               <img 
                 src="https://tinyurl.com/images/overhauling/domains/figure-5.webp" 
                 alt="Send Links Your Audiences Will Trust" 
-                className="w-full max-w-[450px] h-auto object-contain" 
+                className="w-full max-w-112.5 h-auto object-contain" 
               />
             </div>
 
@@ -230,13 +230,13 @@ function Domains() {
 
         {/* ================= 2. SECTION ================= */}
         <section className="w-full py-12 px-6 lg:px-16 bg-white">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
+          <div className="max-w-275 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
             
             <div className="w-full flex justify-center order-1 lg:order-2">
               <img 
                 src="https://tinyurl.com/images/overhauling/domains/figure-6.webp" 
                 alt="Serve Short Links With Big Personality" 
-                className="w-full max-w-[450px] h-auto object-contain" 
+                className="w-full max-w-112.5 h-auto object-contain" 
               />
             </div>
 
@@ -255,13 +255,13 @@ function Domains() {
 
         {/* ================= 3. SECTION ================= */}
         <section className="w-full py-12 px-6 lg:px-16 bg-white">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
+          <div className="max-w-275 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
             
             <div className="w-full flex justify-center order-1 lg:order-1">
               <img 
                 src="https://tinyurl.com/images/overhauling/short-url-tracking/figure-7.webp" 
                 alt="Quick and Easy Configuration" 
-                className="w-full max-w-[450px] h-auto object-contain" 
+                className="w-full max-w-112.5 h-auto object-contain" 
               />
             </div>
 
@@ -280,13 +280,13 @@ function Domains() {
 
         {/* ================= 4. SECTION ================= */}
         <section className="w-full py-12 px-6 lg:px-16 bg-white">
-          <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
+          <div className="max-w-275 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
             
             <div className="w-full flex justify-center order-1 lg:order-2">
               <img 
                 src="https://tinyurl.com/images/overhauling/short-url-tracking/figure-8.webp" 
                 alt="Complete Branded Short URL Management" 
-                className="w-full max-w-[450px] h-auto object-contain" 
+                className="w-full max-w-112.5 h-auto object-contain" 
               />
             </div>
 
@@ -307,7 +307,7 @@ function Domains() {
 
       {/* ================= FAQ SECTION ================= */}
       <section className="w-full bg-[#f8f9fa] py-16 px-6 lg:px-20">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-275 mx-auto">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
@@ -332,7 +332,7 @@ function Domains() {
                       {item.question}
                     </span>
                     <svg 
-                      className={`w-5 h-5 text-[#071728] flex-shrink-0 transition-transform duration-300 ${
+                      className={`w-5 h-5 text-[#071728] -shrink-0 transition-transform duration-300 ${
                         openIndex === index ? 'transform rotate-180' : ''
                       }`} 
                       fill="none" 
