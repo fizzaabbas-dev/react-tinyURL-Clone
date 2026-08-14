@@ -371,7 +371,7 @@ function App() {
       </main>
 
       {/* RECENT LINKS SECTION */}
-      <section className="px-6 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full">
+      <section className="px-4 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full overflow-hidden">
         <h2 className="text-lg font-semibold text-white mb-3">
           Your Recent Links:
         </h2>
@@ -386,38 +386,38 @@ function App() {
               {recentLinks.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col p-3 bg-slate-500/10 rounded border border-slate-200 gap-3 w-full overflow-hidden"
+                  className="flex flex-col p-3 bg-slate-500/10 rounded border border-slate-200 gap-3 w-full box-border max-w-full overflow-hidden"
                 >
-                  <div className="w-full overflow-hidden space-y-1">
+                  <div className="w-full space-y-1 min-w-0 max-w-full overflow-hidden">
                     <a
                       href={item.short}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-medium text-[#002342] hover:underline flex items-center gap-1.5 break-all text-sm w-full"
+                      className="font-medium text-[#002342] hover:underline flex items-center justify-between gap-1.5 text-sm w-full min-w-0"
                     >
-                      <span className="break-all">{item.short}</span>
-                      <ExternalLink className="w-3.5 h-3.5 shrink-0 inline" />
+                      <span className="truncate block w-full">{item.short}</span>
+                      <ExternalLink className="w-3.5 h-3.5 shrink-0 inline text-[#002342]" />
                     </a>
-                    <p className="text-xs text-slate-500 break-all w-full">
+                    <p className="text-xs text-slate-500 truncate w-full">
                       {item.original}
                     </p>
                   </div>
                   
-                  <div className="flex flex-wrap items-center gap-1.5 w-full justify-end pt-1 border-t border-slate-200/60">
+                  <div className="grid grid-cols-3 gap-1.5 w-full pt-1 border-t border-slate-200/65">
                     <a
                       href={item.short}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#007a96] hover:bg-[#00627a] text-white px-2.5 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                      className="bg-[#007a96] hover:bg-[#00627a] text-white px-2 py-1.5 rounded text-[11px] font-semibold flex items-center justify-center gap-1 cursor-pointer truncate"
                     >
-                      <ExternalLink className="w-3 h-3" /> Visit URL
+                      <ExternalLink className="w-3 h-3 shrink-0" /> <span className="truncate">Visit</span>
                     </a>
                     <button
                       type="button"
                       onClick={() => alert("QR code view")}
-                      className="bg-[#007a96] hover:bg-[#00627a] text-white px-2.5 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                      className="bg-[#007a96] hover:bg-[#00627a] text-white px-2 py-1.5 rounded text-[11px] font-semibold flex items-center justify-center gap-1 cursor-pointer truncate"
                     >
-                      <QrCode className="w-3 h-3" /> QR
+                      <QrCode className="w-3 h-3 shrink-0" /> <span>QR</span>
                     </button>
                     <button
                       type="button"
@@ -425,9 +425,9 @@ function App() {
                         navigator.clipboard.writeText(item.short);
                         alert("Copied!");
                       }}
-                      className="bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                      className="bg-[#002342] hover:bg-[#00172b] text-white px-2 py-1.5 rounded text-[11px] font-semibold flex items-center justify-center gap-1 cursor-pointer truncate"
                     >
-                      <Copy className="w-3 h-3" /> Copy
+                      <Copy className="w-3 h-3 shrink-0" /> <span>Copy</span>
                     </button>
                   </div>
                 </div>
