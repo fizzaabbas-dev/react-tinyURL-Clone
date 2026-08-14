@@ -424,7 +424,7 @@ function App() {
                       type="button"
                       onClick={() => {
                         navigator.clipboard.writeText(item.short);
-                        alert("Copied!");
+                        
                       }}
                       className="w-full sm:w-auto bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer"
                     >
