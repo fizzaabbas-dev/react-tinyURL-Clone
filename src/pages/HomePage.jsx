@@ -254,7 +254,7 @@ function App() {
                       </div>
                       {copied && (
                         <span className="text-xs text-green-600 mt-1 block">
-                          Copied to clipboard!
+                          Copied!
                         </span>
                       )}
                     </div>
@@ -389,11 +389,22 @@ function App() {
                       type="button"
                       onClick={() => {
                         navigator.clipboard.writeText(item.short);
-                        alert("Copied!");
+                        setCopiedIndex(index);
+                        setTimeout(() => setCopiedIndex(null), 2000);
                       }}
-                      className="w-full sm:w-auto bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer"
+                      className={`w-full sm:w-auto px-3 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer transition-colors ${
+                        copiedIndex === index
+                          ? "bg-green-600 hover:bg-green-700 text-white"
+                          : "bg-[#002342] hover:bg-[#00172b] text-white"
+                      }`}
                     >
-                      <Copy className="w-3 h-3 shrink-0" /> Copy
+                      {copiedIndex === index ? (
+                        <span>Copied!</span>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3 shrink-0" /> Copy
+                        </>
+                      )}
                     </button>
                   </div>
                 </div>
