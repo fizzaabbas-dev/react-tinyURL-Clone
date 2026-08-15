@@ -24,8 +24,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [shortenedResult, setShortenedResult] = useState("");
-
-  // Yahan FAQs ki state aur toggle function define kiya gaya hai
+  const [copiedIndex, setCopiedIndex] = useState(null);
   const [faqs, setFaqs] = useState([
     {
       question: "What Is a URL Shortener?",
@@ -178,230 +177,240 @@ function App() {
         </div>
 
         {/* BOX SECTION */}
-        <div className="lg:col-span-5 bg-white rounded-lg shadow-2xl text-slate-900 overflow-hidden w-full border border-slate-200">
-          <div className="grid grid-cols-2 border-b border-slate-200 text-xs sm:text-sm font-semibold">
+       <div className="lg:col-span-5 bg-white rounded-lg shadow-2xl text-slate-900 overflow-hidden w-full border border-slate-200">
+  <div className="grid grid-cols-2 border-b border-slate-200 text-xs sm:text-sm font-semibold">
+    <button
+      type="button"
+      onClick={() => setActiveTab("shorten")}
+      className={`py-3.5 px-3 flex items-center justify-center space-x-2 transition text-center cursor-pointer ${
+        activeTab === "shorten"
+          ? "bg-white text-slate-700 hover:bg-slate-100"
+          : "bg-[#0092b3] text-white"
+      }`}
+    >
+      <Link2 className="w-4 h-4" />
+      <span>Shorten a Link</span>
+    </button>
+    <button
+      type="button"
+      onClick={() => setActiveTab("qr")}
+      className={`py-3.5 px-3 flex items-center justify-center space-x-2 transition text-center cursor-pointer ${
+        activeTab === "qr"
+          ? "bg-white text-slate-700 hover:bg-slate-100"
+          : "bg-[#0092b3] text-white"
+      }`}
+    >
+      <QrCode className="w-4 h-4" />
+      <span>Generate QR Code</span>
+    </button>
+  </div>
+
+  <div className="p-6">
+    <form onSubmit={handleFormSubmit}>
+      <div className="space-y-4">
+        <div>
+          <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+            <Send className="w-3.5 h-3.5 text-[#002342]" />
+            <span>
+              {activeTab === "shorten" ? "Long URL" : "Destination URL"}{" "}
+              <span className="text-red-500">*</span>
+            </span>
+          </label>
+          <input
+            type="text"
+            value={destinationUrl}
+            onChange={(e) => setDestinationUrl(e.target.value)}
+            placeholder="Paste long URL here"
+            required
+            className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#0092b3]"
+          />
+        </div>
+
+        {activeTab === "shorten" && shortenedResult ? (
+          <div className="space-y-4 pt-2">
+            <div>
+              <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                <span>TinyURL Link</span>
+              </label>
+              <div className="relative flex items-center">
+                <input
+                  type="text"
+                  readOnly
+                  value={shortenedResult}
+                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded text-sm pr-16 focus:outline-none"
+                />
+                <div className="absolute right-3 flex items-center justify-center">
+                  {copied ? (
+                    <span className="text-xs font-semibold text-black">Copied!</span>
+                  ) : (
+                    <Copy
+                      onClick={() => {
+                        navigator.clipboard.writeText(shortenedResult);
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      }}
+                      className="w-4 h-4 text-slate-500 hover:text-[#002342] cursor-pointer transition"
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+
             <button
               type="button"
-              onClick={() => setActiveTab("shorten")}
-              className={`py-3.5 px-3 flex items-center justify-center space-x-2 transition text-center cursor-pointer ${
-                activeTab === "shorten"
-                  ? "bg-white text-slate-700 hover:bg-slate-100"
-                  : "bg-[#0092b3] text-white"
-              }`}
+              onClick={() => {
+                setShortenedResult("");
+                setDestinationUrl("");
+              }}
+              className="block text-center w-full bg-[#1b7a3e] hover:bg-[#166332] text-white font-semibold py-3 px-4 rounded shadow text-sm transition cursor-pointer mt-4"
             >
-              <Link2 className="w-4 h-4" />
-              <span>Shorten a Link</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab("qr")}
-              className={`py-3.5 px-3 flex items-center justify-center space-x-2 transition text-center cursor-pointer ${
-                activeTab === "qr"
-                  ? "bg-white text-slate-700 hover:bg-slate-100"
-                  : "bg-[#0092b3] text-white"
-              }`}
-            >
-              <QrCode className="w-4 h-4" />
-              <span>Generate QR Code</span>
+              Shorten Another Link
             </button>
           </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                  <Globe className="w-3.5 h-3.5 text-[#002342]" />
+                  <span>Domain</span>
+                </label>
+                <select
+                  value={domain}
+                  onChange={(e) => setDomain(e.target.value)}
+                  className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#0092b3]"
+                >
+                  <option value="tinyurl.com">tinyurl.com</option>
+                </select>
+              </div>
 
-          <div className="p-6">
-            <form onSubmit={handleFormSubmit}>
-              <div className="space-y-4">
-                <div>
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
-                    <Send className="w-3.5 h-3.5 text-[#002342]" />
-                    <span>
-                      {activeTab === "shorten" ? "Long URL" : "Destination URL"}{" "}
-                      <span className="text-red-500">*</span>
-                    </span>
-                  </label>
+              <div>
+                <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
+                  <Pencil className="w-3.5 h-3.5 text-[#002342]" />
+                  <span>Alias (optional)</span>
+                </label>
+                <div className="flex items-center space-x-1">
+                  <span className="text-slate-400 font-semibold text-sm">
+                    /
+                  </span>
                   <input
                     type="text"
-                    value={destinationUrl}
-                    onChange={(e) => setDestinationUrl(e.target.value)}
-                    placeholder="Paste long URL here"
-                    required
-                    className="w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#0092b3]"
+                    value={alias}
+                    onChange={(e) => setAlias(e.target.value)}
+                    placeholder="Add alias here"
+                    className="w-full px-2.5 py-2.5 bg-white border border-slate-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#0092b3]"
                   />
                 </div>
-
-                {activeTab === "shorten" && shortenedResult ? (
-                  <div className="space-y-4 pt-2">
-                    <div>
-                      <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
-                        <span>TinyURL Link</span>
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="text"
-                          readOnly
-                          value={shortenedResult}
-                          className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded text-sm pr-10 focus:outline-none"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => {
-                            navigator.clipboard.writeText(shortenedResult);
-                            setCopied(true);
-                            setTimeout(() => setCopied(false), 2000);
-                          }}
-                          className="absolute right-3 top-3 text-slate-500 hover:text-slate-800 cursor-pointer"
-                        >
-                          <Copy className="w-4 h-4" />
-                        </button>
-                      </div>
-                      {copied && (
-                        <span className="text-xs text-green-600 mt-1 block">
-                          Copied to clipboard!
-                        </span>
-                      )}
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShortenedResult("");
-                        setDestinationUrl("");
-                      }}
-                      className="block text-center w-full bg-[#1b7a3e] hover:bg-[#166332] text-white font-semibold py-3 px-4 rounded shadow text-sm transition cursor-pointer mt-4"
-                    >
-                      Shorten Another Link
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
-                          <Globe className="w-3.5 h-3.5 text-[#002342]" />
-                          <span>Domain</span>
-                        </label>
-                        <select
-                          value={domain}
-                          onChange={(e) => setDomain(e.target.value)}
-                          className="w-full px-3 py-2.5 bg-white border border-slate-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#0092b3]"
-                        >
-                          <option value="tinyurl.com">tinyurl.com</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-700 mb-1.5 flex items-center space-x-1">
-                          <Pencil className="w-3.5 h-3.5 text-[#002342]" />
-                          <span>Alias (optional)</span>
-                        </label>
-                        <div className="flex items-center space-x-1">
-                          <span className="text-slate-400 font-semibold text-sm">
-                            /
-                          </span>
-                          <input
-                            type="text"
-                            value={alias}
-                            onChange={(e) => setAlias(e.target.value)}
-                            placeholder="Add alias here"
-                            className="w-full px-2.5 py-2.5 bg-white border border-slate-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-[#0092b3]"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-slate-400 -mt-2">
-                      Must be at least 5 characters
-                    </p>
-
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="block text-center w-full bg-[#1b7a3e] hover:bg-[#166332] text-white font-semibold py-3 px-4 rounded shadow text-sm transition cursor-pointer mt-3"
-                    >
-                      {loading
-                        ? activeTab === "shorten"
-                          ? "Shortening..."
-                          : "Generating..."
-                        : activeTab === "shorten"
-                          ? "Shorten Link"
-                          : "Generate QR Code"}
-                    </button>
-
-                    <p className="text-[11px] text-slate-500 text-center leading-normal pt-1 font-normal">
-                      By clicking{" "}
-                      {activeTab === "shorten"
-                        ? "Shorten Link"
-                        : "Generate QR Code"}
-                      , you agree with our{" "}
-                      <span className="underline cursor-pointer">
-                        Terms of Service
-                      </span>
-                      ,{" "}
-                      <span className="underline cursor-pointer">
-                        Privacy Policy
-                      </span>
-                      , and{" "}
-                      <span className="underline cursor-pointer">
-                        Use of Cookies
-                      </span>
-                      .
-                    </p>
-                  </>
-                )}
               </div>
-            </form>
-          </div>
-        </div>
+            </div>
+            <p className="text-[11px] text-slate-400 -mt-2">
+              Must be at least 5 characters
+            </p>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="block text-center w-full bg-[#1b7a3e] hover:bg-[#166332] text-white font-semibold py-3 px-4 rounded shadow text-sm transition cursor-pointer mt-3"
+            >
+              {loading
+                ? activeTab === "shorten"
+                  ? "Shortening..."
+                  : "Generating..."
+                : activeTab === "shorten"
+                  ? "Shorten Link"
+                  : "Generate QR Code"}
+            </button>
+
+            <p className="text-[11px] text-slate-500 text-center leading-normal pt-1 font-normal">
+              By clicking{" "}
+              {activeTab === "shorten"
+                ? "Shorten Link"
+                : "Generate QR Code"}
+              , you agree with our{" "}
+              <span className="underline cursor-pointer">
+                Terms of Service
+              </span>
+              ,{" "}
+              <span className="underline cursor-pointer">
+                Privacy Policy
+              </span>
+              , and{" "}
+              <span className="underline cursor-pointer">
+                Use of Cookies
+              </span>
+              .
+            </p>
+          </>
+        )}
+      </div>
+    </form>
+  </div>
+</div>
       </main>
 
       {/* RECENT LINKS SECTION */}
       <section className="px-4 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full">
-        <h2 className="text-lg font-semibold text-white mb-3">
-          Your Recent Links:
-        </h2>
-        <div className="bg-white rounded-lg shadow p-4 text-slate-700 text-sm">
-          {recentLinks.length === 0 ? (
-            <div className="flex items-center space-x-2 text-slate-700 font-normal">
-              <AlertTriangle className="w-5 h-5 text-amber-500" />
-              <span>No links yet in your history</span>
+  <h2 className="text-lg font-semibold text-white mb-3">
+    Your Recent Links:
+  </h2>
+  <div className="bg-white rounded-lg shadow p-4 text-slate-700 text-sm">
+    {recentLinks.length === 0 ? (
+      <div className="flex items-center space-x-2 text-slate-700 font-normal">
+        <AlertTriangle className="w-5 h-5 text-amber-500" />
+        <span>No links yet in your history</span>
+      </div>
+    ) : (
+      <div className="space-y-3">
+        {recentLinks.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-2.5 bg-slate-500/10 rounded border border-slate-200 gap-2 w-full max-w-full overflow-hidden"
+          >
+            <div className="w-full sm:w-auto flex-1 space-y-0.5 min-w-0 overflow-hidden">
+              <a
+                href={item.short}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#002342] hover:underline flex items-center justify-between sm:justify-start gap-1.5 text-sm w-full min-w-0"
+              >
+                <span className="truncate">{item.short}</span>
+                <ExternalLink className="w-3.5 h-3.5 shrink-0 inline text-[#002342]" />
+              </a>
+              <p className="text-xs text-slate-500 truncate w-full">
+                {item.original}
+              </p>
             </div>
-          ) : (
-            <div className="space-y-3">
-              {recentLinks.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-2.5 bg-slate-500/10 rounded border border-slate-200 gap-2 w-full max-w-full overflow-hidden"
-                >
-                  <div className="w-full sm:w-auto flex-1 space-y-0.5 min-w-0 overflow-hidden">
-                    <a
-                      href={item.short}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-[#002342] hover:underline flex items-center justify-between sm:justify-start gap-1.5 text-sm w-full min-w-0"
-                    >
-                      <span className="truncate">{item.short}</span>
-                      <ExternalLink className="w-3.5 h-3.5 shrink-0 inline text-[#002342]" />
-                    </a>
-                    <p className="text-xs text-slate-500 truncate w-full">
-                      {item.original}
-                    </p>
-                  </div>
 
-                  <div className="w-full sm:w-auto flex items-center justify-end gap-1.5 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-200/60">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        navigator.clipboard.writeText(item.short);
-                        alert("Copied!");
-                      }}
-                      className="w-full sm:w-auto bg-[#002342] hover:bg-[#00172b] text-white px-3 py-1.5 rounded text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer"
-                    >
-                      <Copy className="w-3 h-3 shrink-0" /> Copy
-                    </button>
-                  </div>
-                </div>
-              ))}
+            <div className="w-full sm:w-auto flex items-center justify-end gap-1.5 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-200/60">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigator.clipboard.writeText(item.short);
+                  setCopiedIndex(index);
+                  setTimeout(() => setCopiedIndex(null), 2000);
+                }}
+                className={`w-full sm:w-auto px-3.5 py-1.5 rounded text-xs font-semibold flex items-center justify-center cursor-pointer min-w-16 transition ${
+                  copiedIndex === index
+                    ? "bg-slate-200 text-black shadow-inner"
+                    : "bg-[#002342] hover:bg-[#00172b] text-white"
+                }`}
+              >
+                {copiedIndex === index ? (
+                  <span>Copied!</span>
+                ) : (
+                  <>
+                    <Copy className="w-3 h-3 shrink-0" /> Copy
+                  </>
+                )}
+              </button>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
 
       {/* TINYURL PLANS INCLUDE SECTION */}
       <section className="bg-white text-[#212529] py-14 px-6 sm:px-10 lg:px-12">
