@@ -350,68 +350,69 @@ function App() {
 
       {/* RECENT LINKS SECTION */}
       <section className="px-4 sm:px-12 lg:px-16 pb-16 max-w-337.5 mx-auto w-full">
-  <h2 className="text-lg font-semibold text-white mb-3">
-    Your Recent Links:
-  </h2>
-  <div className="bg-white rounded-lg shadow p-4 text-slate-700 text-sm">
-    {recentLinks.length === 0 ? (
-      <div className="flex items-center space-x-2 text-slate-700 font-normal">
-        <AlertTriangle className="w-5 h-5 text-amber-500" />
-        <span>No links yet in your history</span>
-      </div>
-    ) : (
-      <div className="space-y-3">
-        {recentLinks.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-2.5 bg-slate-500/10 rounded border border-slate-200 gap-2 w-full max-w-full overflow-hidden"
-          >
-            <div className="w-full sm:w-auto flex-1 space-y-0.5 min-w-0 overflow-hidden">
-              <a
-                href={item.short}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-[#002342] hover:underline flex items-center justify-between sm:justify-start gap-1.5 text-sm w-full min-w-0"
-              >
-                <span className="truncate">{item.short}</span>
-                <ExternalLink className="w-3.5 h-3.5 shrink-0 inline text-[#002342]" />
-              </a>
-              <p className="text-xs text-slate-500 truncate w-full">
-                {item.original}
-              </p>
-            </div>
+  <div className="max-w-md lg:max-w-none mx-auto lg:mx-0">
+    <h2 className="text-lg font-semibold text-white mb-3">
+      Your Recent Links:
+    </h2>
+    <div className="bg-white rounded-lg shadow-2xl p-3 sm:p-5 text-slate-700 text-sm border border-slate-200 max-w-[92%] sm:max-w-none mx-auto">
+      {recentLinks.length === 0 ? (
+        <div className="flex items-center space-x-2 text-slate-700 font-normal">
+          <AlertTriangle className="w-5 h-5 text-amber-500" />
+          <span>No links yet in your history</span>
+        </div>
+      ) : (
+        <div className="space-y-2.5">
+          {recentLinks.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-2.5 px-3 bg-slate-500/5 rounded border border-slate-200 gap-2.5 w-full overflow-hidden"
+            >
+              <div className="w-full sm:w-auto flex-1 space-y-0.5 min-w-0 overflow-hidden">
+                <a
+                  href={item.short}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-[#002342] hover:underline flex items-center justify-between sm:justify-start gap-1.5 text-xs sm:text-sm w-full min-w-0"
+                >
+                  <span className="truncate">{item.short}</span>
+                  <ExternalLink className="w-3 h-3 shrink-0 inline text-[#002342]" />
+                </a>
+                <p className="text-[11px] text-slate-500 truncate w-full">
+                  {item.original}
+                </p>
+              </div>
 
-            <div className="w-full sm:w-auto flex items-center justify-end gap-1.5 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-200/60">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigator.clipboard.writeText(item.short);
-                  setCopiedIndex(index);
-                  setTimeout(() => setCopiedIndex(null), 2000);
-                }}
-                className={`w-full sm:w-auto px-3.5 py-1.5 rounded text-xs font-semibold flex items-center justify-center cursor-pointer min-w-16 transition ${
-                  copiedIndex === index
-                    ? "bg-slate-200 text-black shadow-inner"
-                    : "bg-[#002342] hover:bg-[#00172b] text-white"
-                }`}
-              >
-                {copiedIndex === index ? (
-                  <span>Copied!</span>
-                ) : (
-                  <>
-                    <Copy className="w-3 h-3 shrink-0" /> Copy
-                  </>
-                )}
-              </button>
+              <div className="w-full sm:w-auto flex items-center justify-end">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigator.clipboard.writeText(item.short);
+                    setCopiedIndex(index);
+                    setTimeout(() => setCopiedIndex(null), 2000);
+                  }}
+                  className={`w-full sm:w-auto h-9 sm:h-auto px-4 py-1.5 sm:py-1 rounded text-xs font-semibold flex items-center justify-center gap-1 cursor-pointer transition ${
+                    copiedIndex === index
+                      ? "bg-slate-200 text-black shadow-inner"
+                      : "bg-[#002342] hover:bg-[#00172b] text-white"
+                  }`}
+                >
+                  {copiedIndex === index ? (
+                    <span className="text-black font-semibold">Copied!</span>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 shrink-0" /> Copy
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    )}
+          ))}
+        </div>
+      )}
+    </div>
   </div>
 </section>
-
       {/* TINYURL PLANS INCLUDE SECTION */}
       <section className="bg-white text-[#212529] py-14 px-6 sm:px-10 lg:px-12">
         <div className="max-w-310 mx-auto">
